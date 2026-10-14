@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Env & data lokal
+.env
+backend/aidiag.db
+backend/test_smoke.db
+*.sqlite3
+
+# Node
+node_modules/
+dist/
+
+# Artefak UAT lokal
+*.png
+!docs/**/*.png
+
+# Log tunnel & runtime lokal
+tools/*.log
+*.log
+
+# IDE
+.vscode/
+.idea/

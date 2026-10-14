@@ -1,0 +1,104 @@
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #231942;
+  --ink: #2b2f3f;
+  --muted: #8a8fa3;
+  --line: #eee9f9;
+  --bg: #f5f3fb;
+}
+
+* { box-sizing: border-box; }
+html, body, #app { height: 100%; margin: 0; }
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- 登录页 ---------- */
+.login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(168, 85, 247, 0.35), transparent 60%),
+    linear-gradient(150deg, #1c1038 0%, #2e1065 45%, #4c1d95 100%);
+}
+.login-card {
+  width: 400px;
+  border: 0;
+  border-radius: 18px;
+  padding: 12px 8px;
+  box-shadow: 0 24px 64px rgba(20, 8, 46, 0.45);
+}
+.login-card .title {
+  margin: 0 0 4px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(90deg, #6d28d9, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.login-card .sub { text-align: center; color: var(--muted); font-size: 13px; margin: 0 0 24px; }
+.login-card .btn { width: 100%; }
+.login-card .err { color: #e5484d; text-align: center; font-size: 13px; margin: 12px 0 0; }
+
+/* ---------- 布局 ---------- */
+.shell { display: flex; min-height: 100vh; }
+.shell .side {
+  width: 220px;
+  flex: none;
+  background: var(--brand-dark);
+  display: flex;
+  flex-direction: column;
+}
+.shell .brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 22px 20px 18px;
+}
+.shell .side .el-menu { border-right: 0; flex: 1; background: transparent; }
+.shell .side .el-menu-item { color: #b8b3d9; }
+.shell .side .el-menu-item.is-active {
+  color: #fff;
+  background: linear-gradient(90deg, rgba(124, 58, 237, 0.55), rgba(124, 58, 237, 0.12));
+  border-right: 3px solid #a855f7;
+}
+.shell .side .el-menu-item:hover { background: rgba(255, 255, 255, 0.06); color: #fff; }
+
+.shell .head {
+  height: 60px;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  padding: 0 24px;
+}
+.shell .head .who { color: #5b5f73; font-size: 14px; }
+.shell .main { background: var(--bg); }
+
+/* ---------- 通用小组件 ---------- */
+.toolbar { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.pager { margin-top: 16px; justify-content: flex-end; }
+.muted { color: var(--muted); }
+.mono, code { font-family: 'JetBrains Mono', Consolas, monospace; }
+
+.share-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 6px 0 2px;
+}
+.share-body .qr svg { width: 180px; height: 180px; border-radius: 8px; }
+.share-tip { color: var(--muted); font-size: 12.5px; line-height: 1.8; margin: 0; text-align: center; }
+
+.el-button--primary { --el-button-bg-color: var(--brand); --el-button-border-color: var(--brand); }

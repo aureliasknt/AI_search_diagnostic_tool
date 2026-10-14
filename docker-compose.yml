@@ -1,0 +1,39 @@
+# Docker Compose untuk lingkungan production-like (PRD 8.1).
+# Dev lokal tidak memerlukan file ini: backend default pakai SQLite + LocalWorker.
+#
+# Penggunaan:
+#   docker compose up -d          # Postgres + Redis
+#   # lalu set env backend:
+#   DATABASE_URL=postgresql+psycopg://aidiag:aidiag@localhost:5432/aidiag
+#   WORKER_BACKEND=celery
+#   # dan jalankan: uvicorn app.main:app  +  celery -A app.engine.celery_app worker
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: aidiag
+      POSTGRES_PASSWORD: aidiag
+      POSTGRES_DB: aidiag
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aidiag"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
